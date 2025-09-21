@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Video Background */
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(50%);
+    }
+
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #00d4ff, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 3s infinite alternate;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #00d4ff, 0 0 20px #7c3aed; }
+      100% { text-shadow: 0 0 20px #7c3aed, 0 0 30px #00d4ff; }
+    }
+
+    .btn-back, .btn-video {
+      display: inline-block;
+      background: linear-gradient(45deg, #00d4ff, #7c3aed);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 10px 5px;
+      transition: transform 0.3s ease, background 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-back:hover, .btn-video:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #7c3aed, #00d4ff);
+    }
+
+    /* SLIDER CONTAINER */
+    .slider-wrapper {
+      width: 90%;
+      overflow: hidden;
+      position: relative;
+      margin: 20px auto;
+      z-index: 1;
+    }
+
+    .slider {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: slide 40s linear infinite;
+    }
+
+    .slider-wrapper:hover .slider {
+      animation-play-state: paused;
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .gallery-item {
+      min-width: 250px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      position: relative;
+      flex-shrink: 0;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.6);
+      text-align: center;
+      padding: 5px;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .gallery-item:hover .caption {
+      opacity: 1;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 15px;
+      font-size: 0.85rem;
+      color: #ccc;
+      text-align: center;
+      text-shadow: 0 0 5px black;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Video Background -->
+  <video class="video-bg" autoplay muted loop id="bgVideo">
+    <source src="vid/1.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <header> My Gallery</header>
+
+  <div>
+    <button class="btn-video" onclick="toggleVideo()">⏯ Play/Pause Video</button>
+  </div>
+
+  <!-- SLIDER -->
+  <div class="slider-wrapper">
+    <div class="slider">
+      <div class="gallery-item">
+        <img src="img/m1.jpeg" alt="Project 1">
+        <div class="caption">Project 1 - Web Design</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="img/m2.jpeg" alt="Project 2">
+        <div class="caption">Project 2 - App UI</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="img/m3.jpeg" alt="Project 3">
+        <div class="caption">Project 3 - Coding Session</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="img/m4.jpeg" alt="Project 4">
+        <div class="caption">Project 4 - Hardware Setup</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="img/m5.jpeg" alt="Project 5">
+        <div class="caption">Project 5 - Cybersecurity Lab</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="img/m6.jpeg" alt="Project 6">
+        <div class="caption">Project 6 - Creative Design</div>
+      </div>
+
+      <!-- Duplicate for seamless effect -->
+      <div class="gallery-item">
+        <img src="img/m1.jpeg" alt="Project 1">
+        <div class="caption">Project 1 - Web Design</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="img/m2.jpeg" alt="Project 2">
+        <div class="caption">Project 2 - App UI</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <a href="index.html" class="btn-back">⬅ Back to Home</a>
+</div>
+
+  <footer>Copy and paste with ❤️ & Code | Jexer Jake T. Castillo</footer>
+
+  <script>
+    const video = document.getElementById('bgVideo');
+
+    function toggleVideo() {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+  </script>
+
+</body>
+</html>

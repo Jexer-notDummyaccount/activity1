@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My IT-Themed Homepage</title>
+  <style>
+    /* Fullscreen Background Slideshow */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .slideshow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .slideshow img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .slideshow img.active {
+      opacity: 1;
+    }
+
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 30px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #00d4ff, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #00d4ff, 0 0 20px #7c3aed; }
+      100% { text-shadow: 0 0 20px #7c3aed, 0 0 30px #00d4ff; }
+    }
+
+	h1{      width: 100%;
+      text-align: center;
+      font-weight: bold;
+      background: linear-gradient(90deg, #00d4ff, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 3s infinite alternate;
+}
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      max-width: 1000px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 20px;
+      width: 260px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .card:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 30px rgba(0, 255, 255, 0.6);
+    }
+
+    .icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      margin: 10px 0;
+      font-size: 1.6rem;
+      color: #00d4ff;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: #f1f1f1;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(45deg, #00d4ff, #7c3aed);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #7c3aed, #00d4ff);
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 15px;
+      font-size: 0.85rem;
+      color: #ccc;
+      text-align: center;
+      text-shadow: 0 0 5px black;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Slideshow -->
+  <div class="slideshow">
+    <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61" class="active">
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
+  </div>
+
+  <header>🚀 Welcome to each and everyone, Have a nice day! 🌌</header>
+<hr>
+<h1>Hi! I'm Jexer Jake T. Castillo come and check my info.</h1>
+<hr>
+  <div class="container">
+    <div class="card">
+      <div class="icon">📄</div>
+      <h2>Resume</h2>
+      <p>See my education, skills, and projects. Built for copiers!</p>
+      <a href="resume.html" class="btn">View Resume</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">🖼️</div>
+      <h2>Gallery</h2>
+      <p>Explore my wonderful gallery with photos, designs, and snapshots.</p>
+      <a href="gallery.html" class="btn">Open Gallery</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎯</div>
+      <h2>Activities</h2>
+      <p>Check out my coding challenges, events, and tech workshops!</p>
+      <a href="#" class="btn">See Activities</a>
+    </div>
+  </div>
+
+  <footer>Copy and paste with ❤️ & Code | Jexer Jake T. Castillo</footer>
+
+  <script>
+    // Background Slideshow Script
+    let slides = document.querySelectorAll(".slideshow img");
+    let index = 0;
+
+    setInterval(() => {
+      slides[index].classList.remove("active");
+      index = (index + 1) % slides.length;
+      slides[index].classList.add("active");
+    }, 5000); // Change every 5 seconds
+  </script>
+
+</body>
+</html>
